@@ -14,7 +14,7 @@ dnf install mailx
 ### 1.2 修改mailx库相关配置
 
 1. 首先在Google gmail上开启两步验证
-2. 接着获取应用专用密码（下列配置中的`adcaluezkfrtymgs`）
+2. 接着获取应用专用密码（16位）
 3. 然后在`!/etc/mail.rc`文件中加入以下配置
 
 ```bash
@@ -25,7 +25,7 @@ dnf install mailx
 # gmail-set
 set smtp-auth=login                             # 认证方式
 set smtp-auth-user=sevenpaape832@gmail.com      # 邮箱账号
-set smtp-auth-password=adcaluezkfrtymgs         # 邮箱密码或授权码
+set smtp-auth-password=			        # 邮箱密码或授权码
 set from="sevenpaape832@gmail.com"              # 发件人地址
 set smtp=smtps://smtp.gmail.com:465             # stmp服务器地址，采用ssl协议（465端口） 
 set ssl-verify=ignore                           # 忽略ssl证书验证
