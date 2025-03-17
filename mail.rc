@@ -1,0 +1,12 @@
+# !/etc/mail.rc
+
+# ...
+
+# gmail-set
+set smtp=smtp.gmail.com:465
+set smtp-auth=login                             # 认证方式
+set smtp-auth-user=sevenpaape832@gmail.com      # 邮箱账号
+set smtp-auth-password=adcaluezkfrtymgs         # 邮箱密码或授权码
+set from="sevenpaape832@gmail.com"              # 发件人地址
+set smtp=smtps://smtp.gmail.com:465
+set ssl-verify=ignore

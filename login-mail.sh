@@ -66,4 +66,3 @@ inotifywait -m -e modify --format "%e %f" "$LOG_FILE" | while read -r event file
                 "$EMAIL_TO" 2>> /var/log/mail_errors.log
         ) &
     done
-done
