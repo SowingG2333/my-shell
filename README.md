@@ -1,3 +1,9 @@
+# 基于shell脚本自动化检测用户登录情况
+
+**这是一个基于shell脚本的项目，能够部署在linux系统，在检测到登录请求时进行邮件通知**
+
+# 使用教程
+
 ## 1. 安装依赖库，完善相关配置
 
 ### 1.1 运行命令安装mailx库，用于脚本发送邮件
@@ -17,16 +23,17 @@ dnf install mailx
 # ...
 
 # gmail-set
-set smtp=smtp.gmail.com:465
 set smtp-auth=login                             # 认证方式
 set smtp-auth-user=sevenpaape832@gmail.com      # 邮箱账号
 set smtp-auth-password=adcaluezkfrtymgs         # 邮箱密码或授权码
 set from="sevenpaape832@gmail.com"              # 发件人地址
-set smtp=smtps://smtp.gmail.com:465
-set ssl-verify=ignore
+set smtp=smtps://smtp.gmail.com:465             # stmp服务器地址，采用ssl协议（465端口） 
+set ssl-verify=ignore                           # 忽略ssl证书验证
 ```
 
 ### 1.3 运行命令安装inotify-tool库
+
+inotify-tools` 是一个用于 Linux 系统的工具包，主要用于监控文件系统的变化。它基于 Linux 内核的 `inotify` 子系统，提供了一系列命令行工具，帮助用户实时检测文件或目录的变动，并执行相应的操作
 
 ```bash
 dnf install inotify-tools
@@ -59,8 +66,8 @@ touch login-mail.sh
    - 移除所有 `sudo` 命令，改用 `dd` 直接读取日志文件（在先前利用`sudo tail`命令+`while`循环读取日志，导致每次读取都会在日志中新增一条`session`记录，影响了正常登录日志的识别）
    - 必须以 root 用户运行脚本，确保有权限访问 `/var/log/secure`：
      ```bash
-     sudo chmod 700 login-mail.sh
-     sudo ./login-mail.sh
+     sudo su
+     login-mail.sh
      ```
 
 2. 增强字段解析鲁棒性  
